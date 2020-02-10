@@ -1,0 +1,41 @@
+---
+Transform: AWS::Serverless-2016-10-31
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CF stack for my example lambda.
+
+Parameters:
+  Environment:
+    Description: Environment where this stack will be deployed
+    Type: String
+
+  Message:
+    Description: The message to display after invoking the lambda
+    Type: String
+
+Resources:
+  LambdaLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: '/lambda/example-lambda'
+      RetentionInDays: 14
+
+  LambdaFunction:
+    DependsOn: LambdaLogGroup
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: 'Display a message from the environment parameters on invocation.'
+      FunctionName: !Sub 'example-lambda-${Environment}'
+      CodeUri:
+        Bucket: 'lambda-releases'
+        Key: 'example-lambda.jar'
+      Handler: ''
+      Timeout: 300
+      MemorySize: 256
+      Runtime: java8
+      Environment:
+        Variables:
+          Message: !Ref Message
+      Tags:
+        Environment: !Ref Environment
+
+
