@@ -28,7 +28,7 @@
                 steps { 
                     sh "aws cloudformation create-stack --region eu-west-1 \
                                              --stack-name ${stackName} \
-                                             --parameters ParameterKey=Environment,ParameterValue=${env},ParameterKey=Message,ParameterValue=HelloWorld \
+                                             --parameters ParameterKey=Environment,ParameterValue=${params.environment},ParameterKey=Message,ParameterValue=HelloWorld \
                                              --template-url https://${s3CFReleaseBucket}.s3.amazonaws.com/${cfTemplateName}"
                 }
             }
