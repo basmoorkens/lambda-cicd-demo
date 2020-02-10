@@ -28,7 +28,7 @@ Resources:
       CodeUri:
         Bucket: 'lambda-releases'
         Key: 'example-lambda.jar'
-      Handler: 'com.basm.lambdacicd.HelloWorldHandler'
+      Handler: 'com.basm.demo.HelloWorldHandler'
       Timeout: 300
       MemorySize: 256
       Runtime: java8
