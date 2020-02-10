@@ -14,7 +14,7 @@ def call( AGENT_LABEL = 'maven_jdk8' ) {
 
             stage('Run cloudformation') {
                 when {
-                    expression = { params.RUN_CLOUDFORMATION == true}
+                    expression { params.RUN_CLOUDFORMATION == true}
                 }
                 environment { 
                     stackName = "my-example-lambda-${env}"
