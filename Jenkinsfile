@@ -1,8 +1,4 @@
-def call( AGENT_LABEL = 'maven_jdk8' ) {
     pipeline {
-        agent {
-            label AGENT_LABEL
-        }
         parameters {
              booleanParam(name: 'RUN_CLOUDFORMATION', defaultValue: false, description: 'Run the cloudformation stack') 
         }
@@ -31,4 +27,3 @@ def call( AGENT_LABEL = 'maven_jdk8' ) {
  
         }
     }
-}
