@@ -8,12 +8,6 @@
             env = 'DEV'
         }
         stages {
-
-            stage('test') { 
-                steps { 
-                    echo "test"
-                }
-            }
             stage('Run cloudformation') {
                 when {
                     expression { params.RUN_CLOUDFORMATION == true}
@@ -22,7 +16,7 @@
                     stackName = "my-example-lambda-${env}"
                 }
                 steps { 
-                    sh "aws cloudformation create-stack --region eu-west-1 --stack-name ${stackName} --parameters Environment=${env},Message=Hello world"
+                    sh "aws cloudformation create-stack --region eu-west-1 --stack-name${stackName} --parameters Environment=${env},Message=HelloWorld"
                 }
             }
 
