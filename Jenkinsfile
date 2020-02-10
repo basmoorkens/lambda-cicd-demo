@@ -10,11 +10,7 @@ def call( AGENT_LABEL = 'maven_jdk8' ) {
             env = 'DEV'
         }
         stages {
-            stage('Build jar') {
-                steps {
-                    //sh 'mvn clean package'
-                }
-            }
+
 
             stage('Run cloudformation') {
                 when {
@@ -28,18 +24,7 @@ def call( AGENT_LABEL = 'maven_jdk8' ) {
                 }
             }
 
-            stage('S3') {
-                steps {
-
-                }
-            }
-
-
-            stage('Update Lambda') {
-                steps {
-
-                }
-            } 
+ 
         }
     }
 }
