@@ -5,9 +5,7 @@
              booleanParam(name: 'RUN_CLOUDFORMATION', defaultValue: false, description: 'Run the cloudformation stack')
              choice choices: ['dev', 'prod'], description: 'Environment to deploy', name: 'environment'
         }
-        environment {
-            
-        }
+        
         stages {
             stage('Run cloudformation') {
                 when {
