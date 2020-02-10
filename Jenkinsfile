@@ -1,8 +1,6 @@
 
     pipeline {
-        agent {
-            any
-        }
+        agent any
         parameters {
              booleanParam(name: 'RUN_CLOUDFORMATION', defaultValue: false, description: 'Run the cloudformation stack') 
         }
