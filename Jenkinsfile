@@ -32,6 +32,7 @@
                                              --capabilities CAPABILITY_AUTO_EXPAND CAPABILITY_IAM\
                                              --template-url https://${s3CFReleaseBucket}.s3.amazonaws.com/${cfTemplateName} \
                                              --tags Key=Environment,Value=${params.environment} Key=Owner,Value=JWorks"
+                    sh "aws cloudformation wait create-stack-complete --stack-name ${stackName}"
                 }
             }
 
