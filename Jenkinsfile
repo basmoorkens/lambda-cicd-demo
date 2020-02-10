@@ -6,7 +6,7 @@
              choice choices: ['dev', 'prod'], description: 'Environment to deploy', name: 'environment'
         }
         environment { 
-            s3CFReleaseBucket = "s3://jworks-cf-releases/"
+            s3CFReleaseBucket = "jworks-cf-releases"
             cfTemplateName = "example-lambda.yaml"
         }
         stages {
@@ -15,7 +15,7 @@
                     expression { params.RUN_CLOUDFORMATION == true}
                 }
                 steps { 
-                    sh "aws s3 cp cloudformation/${cfTemplateName} ${s3CFReleaseBucket}"
+                    sh "aws s3 cp cloudformation/${cfTemplateName} s3://${s3CFReleaseBucket}"
                 }
             }
             stage('Run cloudformation') {
@@ -29,7 +29,7 @@
                     sh "aws cloudformation create-stack --region eu-west-1 \
                                              --stack-name ${stackName} \
                                              --parameters ParameterKey=Environment,ParameterValue=${env},ParameterKey=Message,ParameterValue=HelloWorld \
-                                             --template-url ${s3CFReleaseBucket}${cfTemplateName}"
+                                             --template-url https://${s3CFReleaseBucket}.s3.amazonaws.com/${cfTemplateName}"
                 }
             }
 
