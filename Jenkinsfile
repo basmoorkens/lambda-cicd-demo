@@ -29,7 +29,7 @@
                     sh "aws cloudformation create-stack --region eu-west-1 \
                                              --stack-name ${stackName} \
                                              --parameters ParameterKey=Environment,ParameterValue=${params.environment} ParameterKey=Message,ParameterValue=HelloWorld \
-                                             --capabilities CAPABILITY_IAM \
+                                             --capabilities CAPABILITY_AUTO_EXPAND \
                                              --template-url https://${s3CFReleaseBucket}.s3.amazonaws.com/${cfTemplateName}"
                 }
             }
