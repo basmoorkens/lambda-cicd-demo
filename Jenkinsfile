@@ -5,14 +5,17 @@ def call( AGENT_LABEL = 'maven_jdk8' ) {
         }
         parameters {
              booleanParam(name: 'RUN_CLOUDFORMATION', defaultValue: false, description: 'Run the cloudformation stack') 
-                choice choices: ['DEFAULT', 'PROMOTE', 'ROLLBACK'], description: '', name: 'statusBuild'
         }
         environment {
             env = 'DEV'
         }
         stages {
 
-
+            stage('test') { 
+                steps { 
+                    echo "test"
+                }
+            }
             stage('Run cloudformation') {
                 when {
                     expression { params.RUN_CLOUDFORMATION == true}
