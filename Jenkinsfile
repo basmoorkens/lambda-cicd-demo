@@ -16,7 +16,7 @@
                     stackName = "my-example-lambda-${env}"
                 }
                 steps { 
-                    sh "aws cloudformation create-stack --region eu-west-1 --stack-name${stackName} --parameters Environment=${env},Message=HelloWorld"
+                    sh "aws cloudformation create-stack --region eu-west-1 --stack-name ${stackName} --parameters Environment=${env},Message=HelloWorld"
                 }
             }
 
