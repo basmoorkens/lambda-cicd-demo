@@ -30,7 +30,7 @@
                                              --stack-name ${stackName} \
                                              --parameters ParameterKey=Environment,ParameterValue=${params.environment} ParameterKey=Message,ParameterValue=HelloWorld \
                                              --capabilities CAPABILITY_AUTO_EXPAND CAPABILITY_IAM\
-                                             --template-url https://${s3CFReleaseBucket}.s3.amazonaws.com/${cfTemplateName} \
+                                             --template-url https://${s3CFReleaseBucket}.s3-eu-west-1.amazonaws.com/${cfTemplateName} \
                                              --tags Key=Environment,Value=${params.environment} Key=Owner,Value=JWorks"
                     sh "aws cloudformation wait stack-create-complete --stack-name ${stackName}"
                 }
